@@ -1,10 +1,16 @@
 import "./menu-item.styles.scss";
 
-const MenuItem = () => {
+const MenuItem = ({title, imageUrl}) => {
   return (
     <div className="menu-item">
+      <div 
+      className="background-image"
+      style={{
+        backgroundImage: `url(${imageUrl})`
+      }}
+      ></div>
       <div className="content">
-        <div className="title">HATS</div>
+        <div className="title">{title}</div>
         <span className="subtitle">SHOP NOW</span>
       </div>
     </div>

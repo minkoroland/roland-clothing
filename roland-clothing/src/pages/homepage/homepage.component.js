@@ -1,4 +1,3 @@
-
 import DirectoryMenu from '../../components/directory/directory-menu.component';
 import './homepage.styles.scss';
 
