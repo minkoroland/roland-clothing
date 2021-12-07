@@ -1,0 +1,19 @@
+body {
+    background-color:blanchedalmond;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.data {
+    color: chocolate;
+    font-size: large;
+}
+
+.picture {
+    max-height: 500px;
+    border: solid chocolate 1px;
+}

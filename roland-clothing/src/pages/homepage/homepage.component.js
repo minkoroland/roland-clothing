@@ -4,7 +4,7 @@ import './homepage.styles.scss';
 const HomePage = () => {
     return (
         <div className='directory-menu'>
-            <DirectoryMenu/>
+            <DirectoryMenu />
         </div>
     );
 }
