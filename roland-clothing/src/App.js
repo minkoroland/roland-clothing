@@ -17,14 +17,14 @@ class App extends Component {
     };
   }
 
-  unsubscribeFromAuth = null
+  unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user})
+    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+      this.setState({ currentUser: user });
 
-      console.log(user)
-    })
+      console.log(user);
+    });
   }
 
   componentWillUnmount() {
@@ -32,9 +32,10 @@ class App extends Component {
   }
 
   render() {
+    const {currentUser}=this.state
     return (
       <div className="App">
-        <Header />
+        <Header currentUser={currentUser} />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/profilepage" element={<ProfilePage />} />

@@ -6,8 +6,7 @@ const ProfilePage = () => {
       <div className="data">
         <p>Name: Mucsi Zoltán</p>
         <p>Occupation: actor, plumber</p>
-        <p>Merch & Pictures:</p>
-          <img className="picture" src="https://kapa.hu/img/termek/10.jpg" alt="roland" />
+        <p>Pictures:</p>
           <img className="picture" src="https://media.port.hu/images/000/118/757.jpg" alt="mucsi" />
       </div>
     </div>
