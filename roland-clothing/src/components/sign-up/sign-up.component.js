@@ -2,43 +2,62 @@ import "./sign-up.styles.scss";
 import React, { Component } from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
+import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "",
+      displayName: "",
       email: "",
       password: "",
-      passwordAgain: "",
+      confirmPassword: "",
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
-    this.setState({ username: "", email: "", password: "", passwordAgain: "" });
-  };
-/*
-  if (password !== passwordAgain) {
-      alert("passwords don't match")
+    const { displayName, email, password, confirmPassword } = this.state;
+
+    if (password !== confirmPassword) {
+      alert("passwords don't match");
       return;
-  }
-*/
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      await createUserProfileDocument(user, { displayName });
+
+      this.setState({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   handleChange = (e) => {
     const { value, name } = e.target;
 
     this.setState({ [name]: value }, () =>
       console.log(
-        this.state.username +
+        this.state.displayName +
           " " +
           this.state.email +
           " " +
           this.state.password +
           " " +
-          this.state.passwordAgain
+          this.state.confirmPassword
       )
     );
   };
@@ -51,11 +70,11 @@ class SignUp extends Component {
 
         <form onSubmit={this.handleSubmit}>
           <FormInput
-            name="username"
-            type="username"
+            name="displayName"
+            type="displayName"
             handleChange={this.handleChange}
-            value={this.state.username}
-            label="username"
+            value={this.state.displayName}
+            label="displayName"
             required
           />
 
@@ -78,10 +97,10 @@ class SignUp extends Component {
           />
 
           <FormInput
-            name="passwordAgain"
+            name="confirmPassword"
             type="password"
             handleChange={this.handleChange}
-            value={this.state.passwordAgain}
+            value={this.state.confirmPassword}
             label="password again"
             required
           />
