@@ -9,6 +9,7 @@ const config = {
   storageBucket: "roland-clothing.appspot.com",
   messagingSenderId: "1096103188527",
   appId: "1:1096103188527:web:72e19cb44ebe8110444eda",
+  // eslint-disable-next-line
   measurementId: "${config.measurementId}",
 };
 
