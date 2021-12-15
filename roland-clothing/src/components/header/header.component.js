@@ -5,9 +5,8 @@ import { auth } from "../../firebase/firebase.utils";
 import { connect } from "react-redux";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { makeCartVisible } from "../../redux/cart/cart.action";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -32,19 +31,19 @@ const Header = ({ currentUser }) => {
         <Link className="option" to="#">
           ABOUT
         </Link>
-        <CartIcon onClick={makeCartVisible}/>
+        <CartIcon />
       </div>
-      <CartDropdown />
+      {
+        !hidden && <CartDropdown />
+      }
+
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
+  hidden: state.cart.hidden,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  makeCartVisible: (user) => dispatch(makeCartVisible(user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);

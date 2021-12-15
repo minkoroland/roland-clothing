@@ -1,13 +1,13 @@
 const INITIAL_STATE = {
-  cartIsVisible: true,
+  hidden: true,
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "MAKE_CART_VISIBLE":
+    case "TOGGLE_CART":
       return {
         ...state,
-        cartIsVisible: action.payload,
+        hidden: !state.hidden,
       };
 
     default:

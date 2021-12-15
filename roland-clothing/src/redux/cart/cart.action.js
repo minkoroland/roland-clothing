@@ -1,4 +1,3 @@
-export const makeCartVisible = (user) => ({
-  type: "MAKE_CART_VISIBLE",
-  payload:user,
+export const toggleCart = () => ({
+  type: "TOGGLE_CART",
 });
