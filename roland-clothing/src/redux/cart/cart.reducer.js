@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   hidden: true,
+  items: [],
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -10,9 +11,15 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         hidden: !state.hidden,
       };
 
-    default:
-      return state;
-  }
-};
+    case "ADD_ITEM":
+      return {
+        ...state,
+        items: [...state.items, action.payload],
+      };
 
+      default:
+        return state;
+      }
+    };
+    
 export default cartReducer;
