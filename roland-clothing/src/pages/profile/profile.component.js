@@ -1,16 +1,23 @@
 import "./profile.styles.scss";
+import { connect } from "react-redux";
+import { selectDisplayName, selectEmail } from "../../redux/user/user.selector";
+import { createStructuredSelector } from "reselect";
 
-const ProfilePage = () => {
+const ProfilePage = ({ displayName, email }) => {
   return (
     <div className="main">
       <div className="data">
-        <p>Name: Mucsi Zoltán</p>
+        <p>Name: {displayName}</p>
         <p>Occupation: actor, plumber</p>
-        <p>Pictures:</p>
-          <img className="picture" src="https://media.port.hu/images/000/118/757.jpg" alt="mucsi" />
+        <p>Email: {email}</p>
       </div>
     </div>
   );
 };
 
-export default ProfilePage;
+const mapStateToProps = createStructuredSelector({
+  displayName: selectDisplayName,
+  email: selectEmail,
+});
+
+export default connect(mapStateToProps)(ProfilePage);
