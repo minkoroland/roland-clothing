@@ -4,6 +4,7 @@ import CustomButton from "../custom-button/custom-button.component";
 import "./cart-dropdown.styles.scss";
 import { createStructuredSelector } from "reselect";
 import { selectCartItems } from "../../redux/cart/cart.selector";
+import { Link } from "react-router-dom";
 
 const CartDropdown = ({ cartItems }) => {
   return (
@@ -17,7 +18,9 @@ const CartDropdown = ({ cartItems }) => {
           <span className="empty-message">Your cart is empty</span>
         )}
       </div>
-      <CustomButton>GO TO CHECKOUT</CustomButton>
+      <Link to="/checkout">
+        <CustomButton href>GO TO CHECKOUT</CustomButton>
+      </Link>
     </div>
   );
 };
